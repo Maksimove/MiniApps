@@ -3,6 +3,7 @@
     <device id="retina6_72" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -44,24 +45,32 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="WhH-xR-vCJ">
+                                <rect key="frame" x="196.66666666666666" y="447.66666666666669" width="37" height="37"/>
+                                <color key="color" name="AccentColor"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="WhH-xR-vCJ" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="15N-av-LEC"/>
+                            <constraint firstItem="WhH-xR-vCJ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="aFd-BA-9vR"/>
                             <constraint firstItem="h9z-Ya-jzq" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="pqf-AD-hw3"/>
                             <constraint firstItem="h9z-Ya-jzq" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="rji-Rj-UH9"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="fdc-WE-cAP"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="WhH-xR-vCJ" id="sWV-qz-dqp"/>
                         <outlet property="currentTemp" destination="WqJ-6e-EUg" id="bSr-hy-d3O"/>
                         <outlet property="descriptionTemp" destination="IB2-7g-6Rc" id="x5n-MV-Lfd"/>
                         <outlet property="nameCity" destination="xSs-bl-kkd" id="KKs-D2-TiT"/>
+                        <outlet property="weatherStackView" destination="h9z-Ya-jzq" id="4Pm-gg-vxF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1310" y="-731"/>
+            <point key="canvasLocation" x="1308.8372093023256" y="-731.33047210300435"/>
         </scene>
         <!--Меню-->
         <scene sceneID="bzI-na-go9">
@@ -150,7 +159,7 @@
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" title="Начать опрос" titleAlignment="center">
                                             <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="20"/>
-                                            <color key="baseForegroundColor" red="1" green="0.96929632870000004" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="baseBackgroundColor" systemColor="systemMintColor"/>
                                         </buttonConfiguration>
                                         <connections>
                                             <segue destination="QHk-42-kds" kind="presentation" modalPresentationStyle="fullScreen" id="tXT-qH-g37"/>
@@ -533,6 +542,9 @@
         </scene>
     </scenes>
     <resources>
+        <namedColor name="AccentColor">
+            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

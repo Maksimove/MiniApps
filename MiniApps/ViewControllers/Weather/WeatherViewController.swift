@@ -13,7 +13,8 @@ final class WeatherViewController: UIViewController {
     @IBOutlet var nameCity: UILabel!
     @IBOutlet var currentTemp: UILabel!
     @IBOutlet var descriptionTemp: UILabel!
-    
+    @IBOutlet var weatherStackView: UIStackView!
+    @IBOutlet var activityIndicator: UIActivityIndicatorView!
     // MARK: - Private properties
     private let locationManager = CLLocationManager()
     private let networkManager = NetworkManager.shared
@@ -21,6 +22,9 @@ final class WeatherViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         locationManager.delegate = self
+        weatherStackView.isHidden = true
+        activityIndicator.startAnimating()
+        activityIndicator.hidesWhenStopped = true
     }
 }
     // MARK: - CLLocationManagerDelegate
@@ -36,6 +40,9 @@ extension WeatherViewController: CLLocationManagerDelegate {
                         nameCity.text = weather.location.name
                         currentTemp.text = "\(Int(weather.current.tempC))"
                         descriptionTemp.text = weather.current.condition.text
+                        activityIndicator.stopAnimating()
+                        weatherStackView.isHidden.toggle()
+                        locationManager.stopUpdatingLocation()
                     case .failure(let failure):
                         print(failure)
                     }
