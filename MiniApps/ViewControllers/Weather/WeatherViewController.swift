@@ -41,8 +41,8 @@ extension WeatherViewController: CLLocationManagerDelegate {
                         currentTemp.text = "\(Int(weather.current.tempC))"
                         descriptionTemp.text = weather.current.condition.text
                         activityIndicator.stopAnimating()
-                        weatherStackView.isHidden.toggle()
-                        locationManager.stopUpdatingLocation()
+                        weatherStackView.isHidden = false
+            
                     case .failure(let failure):
                         print(failure)
                     }
@@ -59,7 +59,6 @@ extension WeatherViewController: CLLocationManagerDelegate {
             print("Отклонено")
         case .authorizedAlways, .authorizedWhenInUse:
             locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
-            locationManager.distanceFilter = kCLDistanceFilterNone
             locationManager.startUpdatingLocation()
         @unknown default:
             break
